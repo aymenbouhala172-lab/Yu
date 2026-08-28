@@ -1,0 +1,6 @@
+{
+  "name": "منهاج المتفقه - الأكاديمية الشرعية التدرجية",
+  "description": "منصة تعليمية شرعية منهجية قائمة على التدرج في أبواب العقيدة والفقه والتزكية وعلوم الوحي مع معلم شرعي ذكي واختبارات إتقان تفاعلية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #faf8f5;
+    color: #1c1917;
+  }
+}
+
+.font-amiri {
+  font-family: 'Amiri', serif;
+}
+
+.font-quran {
+  font-family: 'Amiri Quran', 'Amiri', serif;
+}
+
+.font-cairo {
+  font-family: 'Cairo', sans-serif;
+}
+
+.font-tajawal {
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* Islamic Geometric Background Ambient - Clean Scholarly Daylight */
+.bg-islamic-pattern {
+  background-color: #faf8f5;
+  background-image: radial-gradient(rgba(180, 83, 9, 0.08) 1px, transparent 0),
+                    radial-gradient(rgba(4, 120, 87, 0.05) 1px, #faf8f5 0);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Luminous luxury subtle glows */
+.gold-glow {
+  box-shadow: 0 4px 20px -2px rgba(217, 119, 6, 0.15);
+}
+
+.emerald-glow {
+  box-shadow: 0 4px 20px -2px rgba(4, 120, 87, 0.15);
+}
+
+.sapphire-glow {
+  box-shadow: 0 4px 20px -2px rgba(37, 99, 235, 0.15);
+}
+
+/* Gold Metallic Text Gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 50%, #78350f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-emerald-gradient {
+  background: linear-gradient(135deg, #065f46 0%, #047857 50%, #064e3b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth Entrance Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Custom scrollbars for clean light UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(245, 240, 230, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 162, 158, 0.5);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 83, 9, 0.6);
+}
+
+/* Quranic verse framing */
+.quran-ayah-frame {
+  position: relative;
+  border-right: 3px solid #b45309;
+  border-left: 3px solid #b45309;
+  background: linear-gradient(90deg, rgba(180, 83, 9, 0.04) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(180, 83, 9, 0.04) 100%);
+}
