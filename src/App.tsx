@@ -15,6 +15,8 @@ import { CurriculumSidebarDrawer } from './components/CurriculumSidebarDrawer';
 import { FlashcardsView } from './components/FlashcardsView';
 import { SearchModal } from './components/SearchModal';
 import { Breadcrumbs } from './components/Breadcrumbs';
+import { AuthScreen } from './components/AuthScreen';
+import { getSession, endSession, SessionUser } from './utils/auth';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Sparkles, 
@@ -36,6 +38,9 @@ import {
 } from 'lucide-react';
 
 export default function App() {
+  // Authentication gate: user must register/login before entering the app
+  const [currentUser, setCurrentUser] = useState<SessionUser | null>(getSession);
+
   const [progress, setProgress] = useState<UserProgress>(loadUserProgress);
   const [activeDoorId, setActiveDoorId] = useState<string>('door-aqeedah');
   const [activeLessonId, setActiveLessonId] = useState<string>('aqeedah-1');
@@ -218,6 +223,11 @@ export default function App() {
   const nextLesson = currentLessonIndex < activeDoor.lessons.length - 1 ? activeDoor.lessons[currentLessonIndex + 1] : null;
   const isNextLessonUnlocked = true; // Freely navigate between lessons for reading
 
+  // 0. AUTH GATE: Require registration / login before accessing the app
+  if (!currentUser) {
+    return <AuthScreen onAuthenticated={(user) => setCurrentUser(user)} />;
+  }
+
   // 1. FULL PAGE VIEW: AI SCHOLAR MENTOR
   if (viewMode === 'scholar') {
     return (
@@ -254,6 +264,10 @@ export default function App() {
         onOpenCurriculumDrawer={() => setIsCurriculumDrawerOpen(true)}
         onOpenFlashcards={() => setIsFlashcardsOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
+        onLogout={() => {
+          endSession();
+          setCurrentUser(null);
+        }}
       />
 
       {/* Floating Side Pull Tab for Fast Drawer Access & Gesture Hint */}
