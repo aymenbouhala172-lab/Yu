@@ -8,7 +8,8 @@ import {
   MoreVertical,
   Menu,
   Layers,
-  Search
+  Search,
+  LogOut
 } from 'lucide-react';
 import { UserProgress } from '../types';
 import { CURRICULUM_DOORS } from '../data/curriculumData';
@@ -23,6 +24,7 @@ interface HeaderProps {
   onOpenCurriculumDrawer?: () => void;
   onOpenFlashcards?: () => void;
   onOpenSearch?: () => void;
+  onLogout?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -35,6 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenCurriculumDrawer,
   onOpenFlashcards,
   onOpenSearch,
+  onLogout,
 }) => {
   const totalLessons = CURRICULUM_DOORS.reduce((acc, d) => acc + d.lessons.length, 0);
   const completedCount = progress.completedLessonIds.length;
@@ -120,6 +123,18 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <Layers className="w-3.5 h-3.5 text-indigo-700" />
               <span>البطاقات</span>
+            </button>
+          )}
+
+          {/* Logout */}
+          {onLogout && (
+            <button
+              onClick={onLogout}
+              className="p-2 sm:px-3 sm:py-1.5 rounded-xl bg-stone-100 hover:bg-red-50 text-stone-700 hover:text-red-600 text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer"
+              title="تسجيل الخروج"
+            >
+              <LogOut className="w-4 h-4" />
+              <span className="hidden md:inline">خروج</span>
             </button>
           )}
 
